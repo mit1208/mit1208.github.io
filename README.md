@@ -4,21 +4,22 @@
 
 ## About
 
-Personal portfolio showcasing my journey from auditing financial institutions to architecting production-grade AI systems. Currently leading AI development at a healthcare start-up, specializing in Document AI, NLP, and LLM-powered applications.
+Personal portfolio showcasing my journey from auditing financial institutions to architecting production-grade AI & data infrastructure. Currently Senior Data Engineer at Haptiq, specializing in near real-time ETL pipelines, AI Agents (Text-to-SQL, Claude Code, Cursor AI), Snowflake optimization, and enterprise data governance.
 
 ## Highlights
 
-- 🤖 **Lead AI Developer** at SiftMed (Healthcare AI)
+- ⚡ **Senior Data Engineer** at Haptiq
+- 🤖 **Lead AI Developer** at SiftMed
+- 💰 **48% reduction** in Snowflake compute costs through query optimization and refactoring
 - 📊 **50% → 90%** page stream segmentation accuracy using Strands Agents
-- 🎯 **Zero false positives** in duplicate document detection
-- ⚡ **83% extraction hit rate** with foundational models
-- 🔒 Building **secure, private, scalable** ML pipelines
+- 🤖 Built **Text-to-SQL AI Agents** & deployed **Claude Code / Cursor AI agent workflows**
+- 🔒 Implemented **data quality, governance & PII masking** frameworks with dbt
 
 ## Tech Stack
 
-**AI/ML:** AWS Bedrock, SageMaker, Claude Sonnet/Haiku, LangChain, Neo4j, Strands Agents  
-**Data:** PySpark, Pandas, ETL Pipelines, MySQL  
-**Infrastructure:** AWS (Lambda, Step Functions, EventBridge, Textract), Docker, Terraform
+**Data & Analytics:** Snowflake, dbt, Prefect, PySpark, Pandas, Neo4j, Data Modeling, MySQL  
+**AI & Agents:** Text-to-SQL, Claude Code Agents, Cursor AI, AWS Bedrock, SageMaker, RAG Pipelines, LangChain  
+**Infrastructure & MLOps:** AWS (Lambda, Step Functions, EventBridge, Textract), Docker, Terraform, CI/CD
 
 ## Featured Projects
 

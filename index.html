@@ -649,17 +649,642 @@
       color: var(--primary);
     }
 
-    /* Experience Cards */
-    .experience-grid {
+    /* Experience Section Compact In-Screen Layout */
+    #experience {
+      padding: 18px 40px 10px 40px;
+    }
+
+    #experience .section-header {
+      margin-bottom: 10px;
+    }
+
+    #experience .section-title {
+      font-size: 1.8em;
+      margin-bottom: 2px;
+    }
+
+    #experience .section-subtitle {
+      font-size: 0.88em;
+      color: var(--text-dim);
+    }
+
+    /* Experience Cards & 5-Company Horizontal Carousel */
+    .exp-tabs-nav {
       display: grid;
-      gap: 15px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 1024px) {
+      .exp-tabs-nav {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .exp-tabs-nav {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .exp-tab-btn {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 8px 12px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .exp-tab-btn:hover {
+      background: rgba(30, 41, 59, 0.9);
+      border-color: rgba(0, 212, 255, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .exp-tab-btn.active {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.98));
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.25);
+    }
+
+    .exp-tab-btn.active.tab-haptiq {
+      border-color: #f59e0b;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+    }
+
+    .exp-tab-btn.active.tab-siftmed {
+      border-color: #10b981;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+    }
+
+    .exp-tab-btn.active.tab-rbc {
+      border-color: #00d4ff;
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.25);
+    }
+
+    .exp-tab-btn.active.tab-nscc {
+      border-color: #a855f7;
+      box-shadow: 0 0 20px rgba(168, 85, 247, 0.25);
+    }
+
+    .exp-tab-btn.active.tab-cgi {
+      border-color: #3b82f6;
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.25);
+    }
+
+    .tab-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1px;
+    }
+
+    .tab-company-name {
+      font-weight: 700;
+      font-size: 0.9em;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .tab-period-badge {
+      font-size: 0.68em;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .tab-role-sub {
+      font-size: 0.72em;
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Direct Experience Tab Panels Container (Smooth Sliding Carousel) */
+    .exp-panels-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    .exp-panels-track {
+      display: flex;
+      width: 100%;
+      transition: transform 0.55s cubic-bezier(0.25, 1, 0.5, 1);
+      align-items: flex-start;
+      will-change: transform;
+    }
+
+    .exp-panel {
+      width: 100%;
+      flex: 0 0 100%;
+      opacity: 0.15;
+      transform: scale(0.985);
+      transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1), transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+      box-sizing: border-box;
+      pointer-events: none;
+      display: block !important;
+    }
+
+    .exp-panel.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    /* 4. NSCC Cybernetic Research Robot (AI Droid-7B) */
+    .robot-droid-housing {
+      background: linear-gradient(180deg, #1e1b4b 0%, #0f172a 60%, #020617 100%);
+      border: 4px solid #a855f7;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 0 35px rgba(168, 85, 247, 0.25), inset 0 0 25px rgba(0, 0, 0, 0.8), 0 15px 40px rgba(0, 0, 0, 0.6);
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .robot-top-sign {
+      width: 100%;
+      background: linear-gradient(90deg, #7e22ce, #a855f7, #7e22ce);
+      border: 2px solid #c084fc;
+      border-radius: 10px;
+      padding: 8px 16px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 1.02em;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 0 12px rgba(192, 132, 252, 0.8);
+    }
+
+    .robot-avatar-assembly {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px 0 4px 0;
+    }
+
+    /* Robot Head */
+    .robot-head-chassis {
+      width: 130px;
+      background: linear-gradient(145deg, #334155, #1e293b);
+      border: 2px solid #c084fc;
+      border-radius: 18px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
+      position: relative;
+    }
+
+    /* Robot Antennae */
+    .robot-antenna {
+      position: absolute;
+      top: -16px;
+      width: 5px;
+      height: 16px;
+      background: #94a3b8;
+      border-radius: 3px;
+    }
+
+    .robot-antenna.left {
+      left: 24px;
+      transform: rotate(-15deg);
+    }
+
+    .robot-antenna.right {
+      right: 24px;
+      transform: rotate(15deg);
+    }
+
+    .antenna-tip {
+      position: absolute;
+      top: -7px;
+      left: -3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #c084fc;
+      box-shadow: 0 0 10px #a855f7;
+      animation: antennaPulse 1.8s infinite alternate;
+    }
+
+    @keyframes antennaPulse {
+      0% {
+        opacity: 0.5;
+        box-shadow: 0 0 4px #a855f7;
+      }
+
+      100% {
+        opacity: 1;
+        box-shadow: 0 0 14px #d8b4fe;
+      }
+    }
+
+    /* Robot Visor / Eye Screen */
+    .robot-visor-screen {
+      width: 100%;
+      height: 44px;
+      background: #000;
+      border: 1.5px solid #6b21a8;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      box-shadow: inset 0 0 12px rgba(168, 85, 247, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .robot-visor-screen::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(168, 85, 247, 0.08) 50%, transparent 50%);
+      background-size: 100% 4px;
+      pointer-events: none;
+    }
+
+    .robot-eye {
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, #38bdf8 30%, #0284c7 70%, #0369a1 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 12px #38bdf8;
+      transition: all 0.3s ease;
+      position: relative;
+      animation: eyeGlow 2.5s infinite ease-in-out;
+    }
+
+    .robot-eye::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 5px;
+      height: 5px;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .robot-eye.scanning {
+      background: radial-gradient(circle, #f43f5e 30%, #e11d48 70%, #be123c 100%) !important;
+      box-shadow: 0 0 18px #f43f5e !important;
+      animation: eyeScan 0.35s infinite alternate !important;
+    }
+
+    .robot-eye.active-glow {
+      background: radial-gradient(circle, #c084fc 30%, #9333ea 70%, #7e22ce 100%) !important;
+      box-shadow: 0 0 20px #d8b4fe !important;
+    }
+
+    @keyframes eyeGlow {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    @keyframes eyeScan {
+      0% {
+        transform: translateX(-3px);
+      }
+
+      100% {
+        transform: translateX(3px);
+      }
+    }
+
+    /* Robot Mouth Audio Wave Visualizer */
+    .robot-mouth-matrix {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: 6px;
+      height: 10px;
+    }
+
+    .mouth-bar {
+      width: 4px;
+      height: 3px;
+      background: #c084fc;
+      border-radius: 1.5px;
+      transition: height 0.15s ease;
+    }
+
+    .robot-mouth-matrix.speaking .mouth-bar {
+      animation: barDance 0.35s infinite alternate ease-in-out;
+    }
+
+    .robot-mouth-matrix.speaking .mouth-bar:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+
+    .robot-mouth-matrix.speaking .mouth-bar:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .robot-mouth-matrix.speaking .mouth-bar:nth-child(3) {
+      animation-delay: 0.25s;
+    }
+
+    .robot-mouth-matrix.speaking .mouth-bar:nth-child(4) {
+      animation-delay: 0.1s;
+    }
+
+    .robot-mouth-matrix.speaking .mouth-bar:nth-child(5) {
+      animation-delay: 0.2s;
+    }
+
+    @keyframes barDance {
+      0% {
+        height: 3px;
+      }
+
+      100% {
+        height: 12px;
+        background: #38bdf8;
+      }
+    }
+
+    /* Robot Speech & Telemetry Terminal */
+    .robot-dialog-terminal {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8em;
+      line-height: 1.4;
+      color: #e2e8f0;
+      min-height: 44px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
+      box-sizing: border-box;
+    }
+
+    .robot-telemetry-pills {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .robot-stat-pill {
+      flex: 1;
+      background: rgba(30, 27, 75, 0.8);
+      border: 1px solid #7e22ce;
+      border-radius: 8px;
+      padding: 5px 8px;
+      text-align: center;
+    }
+
+    .robot-stat-label {
+      font-size: 0.68em;
+      color: #a5b4fc;
+      text-transform: uppercase;
+    }
+
+    .robot-stat-value {
+      font-size: 0.92em;
+      font-weight: 800;
+      color: #c084fc;
+      margin-top: 1px;
+    }
+
+    .btn-robot-action {
+      background: radial-gradient(circle, #a855f7, #7e22ce);
+      color: #fff;
+      border: 2px solid #e9d5ff;
+      border-radius: 24px;
+      padding: 8px 22px;
+      font-size: 0.9em;
+      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(168, 85, 247, 0.5);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-robot-action:hover:not(:disabled) {
+      transform: scale(1.03);
+      box-shadow: 0 0 24px rgba(168, 85, 247, 0.8);
+    }
+
+    /* 5. CGI Enterprise Internal Audit Matrix Housing */
+    .cgi-audit-housing {
+      background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+      border: 3px solid #3b82f6;
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.25), inset 0 0 20px rgba(0, 0, 0, 0.8);
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .cgi-top-sign {
+      background: linear-gradient(90deg, #1d4ed8, #3b82f6, #1d4ed8);
+      border: 1.5px solid #60a5fa;
+      border-radius: 8px;
+      padding: 5px 12px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 0.88em;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(96, 165, 250, 0.8);
+    }
+
+    .cgi-console-screen {
+      background: #020617;
+      border: 1.5px solid #3b82f6;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #93c5fd;
+      font-size: 0.8em;
+      box-shadow: inset 0 0 15px rgba(59, 130, 246, 0.2);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      min-height: 120px;
+      box-sizing: border-box;
+    }
+
+    .audit-matrix-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin: 2px 0;
+    }
+
+    .audit-matrix-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 5px;
+      padding: 4px 8px;
+      font-size: 0.8em;
+    }
+
+    .audit-row-val {
+      font-weight: 700;
+      color: #94a3b8;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    .audit-row-val.pass {
+      color: #a7f3d0;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid #10b981;
+    }
+
+    .audit-verdict-lcd {
+      background: #020617;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 6px;
+      padding: 5px 8px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.78em;
+      color: #93c5fd;
+    }
+
+    .audit-verdict-lcd.compliant {
+      background: rgba(6, 95, 70, 0.3);
+      border-color: #10b981;
+      color: #34d399;
+      text-shadow: 0 0 8px #10b981;
+      animation: verdictPulse 0.6s infinite alternate;
+    }
+
+    @keyframes verdictPulse {
+      from {
+        box-shadow: 0 0 4px #10b981;
+      }
+
+      to {
+        box-shadow: 0 0 12px #10b981;
+      }
+    }
+
+    .btn-cgi-action {
+      background: radial-gradient(circle, #3b82f6, #1d4ed8);
+      color: #fff;
+      border: 2px solid #93c5fd;
+      border-radius: 24px;
+      padding: 8px 22px;
+      font-size: 0.9em;
+      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 0 16px rgba(59, 130, 246, 0.5);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-cgi-action:hover:not(:disabled) {
+      transform: scale(1.03);
+      box-shadow: 0 0 24px rgba(59, 130, 246, 0.8);
+    }
+
+    /* Slider Navigation Controls */
+    .slider-nav-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      padding: 10px 0;
+    }
+
+    .slider-arrow-btn {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .slider-arrow-btn:hover:not(:disabled) {
+      background: var(--primary);
+      color: #020617;
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+    }
+
+    .slider-arrow-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .slider-dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .slider-dot.active {
+      background: var(--primary);
+      box-shadow: 0 0 10px var(--primary);
+      transform: scale(1.25);
     }
 
     .exp-card {
       background: var(--bg-light);
       border: 1px solid rgba(0, 212, 255, 0.1);
       border-radius: 12px;
-      padding: 20px;
+      padding: 12px 16px;
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
@@ -677,46 +1302,1013 @@
 
     .exp-card:hover {
       border-color: rgba(0, 212, 255, 0.3);
-      transform: translateX(5px);
+    }
+
+    /* Industry Badges */
+    .industry-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.7em;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-left: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      vertical-align: middle;
+    }
+
+    .casino-badge {
+      background: rgba(245, 158, 11, 0.15);
+      color: #f59e0b;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+    }
+
+    .medical-badge {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);
+    }
+
+    .finance-badge {
+      background: rgba(0, 212, 255, 0.15);
+      color: #00d4ff;
+      border: 1px solid rgba(0, 212, 255, 0.4);
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+    }
+
+    /* Split-Screen Experience Layout (Dynamic Fit) */
+    .exp-split-layout {
+      display: grid;
+      grid-template-columns: minmax(320px, 400px) 1fr;
+      gap: 20px;
+      align-items: start;
+      margin-top: 14px;
+    }
+
+    @media (max-width: 1080px) {
+      .exp-split-layout {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+    }
+
+    /* Left interactive machine side - Dynamic Sizing */
+    .exp-machine-col {
+      width: 100%;
+      min-height: 530px;
+      height: auto;
+      box-sizing: border-box;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .exp-machine-col.unlocked-state {
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.15);
+    }
+
+    /* Machine Housings - Dynamic Height to allow text & badges without clipping */
+    .slot-cabinet,
+    .med-monitor-housing,
+    .atm-kiosk-housing,
+    .robot-droid-housing,
+    .cgi-audit-housing {
+      min-height: 530px !important;
+      height: auto !important;
+      max-height: none !important;
+      margin: 0 !important;
+      padding: 18px 20px !important;
+      box-sizing: border-box !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      overflow: visible !important;
+    }
+
+    /* Right experience achievements side - Matching Dynamic Height */
+    .exp-details-col {
+      min-height: 530px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .exp-content-lock {
+      display: none;
+      min-height: 530px;
+      height: 100%;
+      max-height: 620px;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .exp-content-lock.unlocked {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 12px;
+      animation: expContentReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Sleek internal scrollbar for unlocked experience details */
+    .exp-content-lock::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .exp-content-lock::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 4px;
+    }
+
+    .exp-content-lock::-webkit-scrollbar-thumb {
+      background: rgba(56, 189, 248, 0.35);
+      border-radius: 4px;
+    }
+
+    .exp-content-lock::-webkit-scrollbar-thumb:hover {
+      background: rgba(56, 189, 248, 0.7);
+    }
+
+    @keyframes expContentReveal {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .exp-lock-placeholder {
+      min-height: 530px;
+      height: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, 0.65);
+      border: 2px dashed rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      gap: 14px;
+      color: var(--text-dim);
+      transition: all 0.4s ease;
+    }
+
+    .exp-lock-placeholder.hidden {
+      display: none;
+    }
+
+    .exp-lock-placeholder .lock-icon-huge {
+      font-size: 1.8em;
+      filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.2));
+      animation: lockBounce 2.2s infinite ease-in-out;
+    }
+
+    @keyframes lockBounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
+    }
+
+    .lock-cta-title {
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .lock-cta-sub {
+      font-size: 0.88em;
+      line-height: 1.45;
+      max-width: 380px;
+      color: #94a3b8;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ========================================================
+       1. REAL VEGAS CASINO SLOT MACHINE CABINET (HAPTIQ)
+       ======================================================== */
+    .slot-cabinet {
+      background: linear-gradient(180deg, #8a1414 0%, #450a0a 40%, #1c0505 100%);
+      border: 4px solid #f59e0b;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 0 35px rgba(245, 158, 11, 0.25), inset 0 0 25px rgba(0, 0, 0, 0.8), 0 15px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+      user-select: none;
+    }
+
+    /* Marquee Chase Lights */
+    .marquee-header {
+      background: linear-gradient(180deg, #1e1b4b, #0f172a);
+      border: 2px solid #fbbf24;
+      border-radius: 12px;
+      padding: 10px 15px;
+      text-align: center;
+      margin-bottom: 15px;
+      box-shadow: inset 0 0 15px rgba(245, 158, 11, 0.3);
+      position: relative;
+    }
+
+    .marquee-title {
+      font-size: 1.1em;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #fffbeb, #f59e0b, #d97706);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
+    }
+
+    .marquee-bulbs {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 6px;
+    }
+
+    .bulb {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ef4444;
+      box-shadow: 0 0 8px #ef4444;
+      animation: bulbChase 0.6s infinite alternate;
+    }
+
+    .bulb:nth-child(2n) {
+      background: #f59e0b;
+      box-shadow: 0 0 8px #f59e0b;
+      animation-delay: 0.2s;
+    }
+
+    .bulb:nth-child(3n) {
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation-delay: 0.4s;
+    }
+
+    @keyframes bulbChase {
+      from {
+        opacity: 0.3;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    /* 3D Cylindrical Reel Stage */
+    .slot-main-stage {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .reels-casing {
+      flex: 1;
+      background: #020617;
+      border: 2px solid #334155;
+      border-radius: 10px;
+      padding: 8px;
+      box-shadow: inset 0 0 20px #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reels-grid {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .reel-cylinder {
+      width: 68px;
+      height: 68px;
+      background: linear-gradient(180deg, #0f172a 0%, #334155 30%, #f8fafc 50%, #334155 70%, #0f172a 100%);
+      border: 2px solid #64748b;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2em;
+      box-shadow: inset 0 6px 10px rgba(0, 0, 0, 0.8), inset 0 -6px 10px rgba(0, 0, 0, 0.8), 0 3px 8px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .reel-cylinder.spinning {
+      animation: cylinderSpin 0.07s linear infinite;
+    }
+
+    @keyframes cylinderSpin {
+      0% {
+        transform: translateY(-5px) scale(0.96);
+        filter: blur(1.5px);
+      }
+
+      50% {
+        transform: translateY(5px) scale(1.04);
+        filter: blur(2px);
+      }
+
+      100% {
+        transform: translateY(-5px) scale(0.96);
+        filter: blur(1.5px);
+      }
+    }
+
+    /* Interactive 3D Pull Arm / Lever */
+    .lever-assembly {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      width: 36px;
+      position: relative;
+    }
+
+    .lever-base {
+      width: 22px;
+      height: 26px;
+      background: linear-gradient(180deg, #64748b, #1e293b);
+      border: 2px solid #94a3b8;
+      border-radius: 4px;
+      box-shadow: inset 0 0 6px #000;
+    }
+
+    .lever-shaft {
+      width: 8px;
+      height: 50px;
+      background: linear-gradient(90deg, #cbd5e1, #ffffff, #64748b);
+      border-radius: 3px;
+      transform-origin: bottom center;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      top: 4px;
+    }
+
+    .lever-knob {
+      width: 24px;
+      height: 24px;
+      background: radial-gradient(circle at 35% 35%, #ef4444, #991b1b 70%, #450a0a);
+      border-radius: 50%;
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    .lever-assembly:hover .lever-knob {
+      box-shadow: 0 0 14px #ef4444;
+    }
+
+    .lever-assembly.pulled .lever-shaft {
+      transform: rotateX(55deg) translateY(24px) scaleY(0.7);
+    }
+
+    /* Machine Control Panel & Sound Toggle */
+    .slot-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #0f172a;
+      border: 1.5px solid #334155;
+      border-radius: 10px;
+      padding: 8px 12px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .btn-arcade-spin {
+      background: radial-gradient(circle, #f59e0b, #b45309);
+      color: #020617;
+      border: 2px solid #fbbf24;
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 0.85em;
+      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-arcade-spin:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 22px rgba(245, 158, 11, 0.8);
+    }
+
+    .btn-arcade-spin:active {
+      transform: scale(0.96);
+    }
+
+    .slot-banner-lcd {
+      background: #052e16;
+      border: 1.5px solid #10b981;
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76em;
+      color: #4ade80;
+      text-shadow: 0 0 6px rgba(74, 222, 128, 0.6);
+      flex: 1;
+      text-align: center;
+    }
+
+    .slot-banner-lcd.jackpot-win {
+      background: #451a03;
+      border-color: #f59e0b;
+      color: #fde047;
+      text-shadow: 0 0 10px #f59e0b;
+      animation: winGlow 0.5s infinite alternate;
+    }
+
+    @keyframes winGlow {
+      from {
+        box-shadow: 0 0 6px #f59e0b;
+      }
+
+      to {
+        box-shadow: 0 0 18px #f59e0b;
+      }
+    }
+
+    /* ========================================================
+       2. LIFEPAK HOSPITAL ICU CARDIAC DEFIBRILLATOR (SIFTMED)
+       ======================================================== */
+    .med-monitor-housing {
+      background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+      border: 4px solid #059669;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 0 35px rgba(16, 185, 129, 0.2), inset 0 0 25px rgba(0, 0, 0, 0.8), 0 15px 40px rgba(0, 0, 0, 0.6);
+      user-select: none;
+    }
+
+    .med-bezel-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1.5px solid #334155;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76em;
+      color: #94a3b8;
+    }
+
+    .med-screen-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .med-screen-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* CRT Curved Clinical ECG Oscilloscope */
+    .crt-oscilloscope {
+      background: #021a12;
+      border: 2px solid #10b981;
+      border-radius: 8px;
+      height: 75px;
+      position: relative;
+      overflow: hidden;
+      background-image:
+        linear-gradient(rgba(16, 185, 129, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 185, 129, 0.12) 1px, transparent 1px);
+      background-size: 12px 12px;
+      box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9);
+    }
+
+    .crt-oscilloscope::after {
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+      background-size: 100% 4px;
+      pointer-events: none;
+    }
+
+    .ecg-lead-label {
+      position: absolute;
+      top: 4px;
+      left: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68em;
+      color: #34d399;
+      z-index: 2;
+    }
+
+    .crt-flash-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.1s;
+      z-index: 10;
+    }
+
+    .crt-flash-overlay.shocked {
+      opacity: 0.85;
+      transition: opacity 0.6s ease-out;
+    }
+
+    /* Multi-Parameter Vitals HUD */
+    .vitals-hud {
+      background: #020617;
+      border: 1.5px solid #334155;
+      border-radius: 8px;
+      padding: 4px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .vital-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      border-bottom: 1px solid #1e293b;
+      padding: 2px 0;
+    }
+
+    .vital-row:last-child {
+      border-bottom: none;
+    }
+
+    .vital-name {
+      font-size: 0.65em;
+      color: #64748b;
+    }
+
+    .vital-val {
+      font-size: 1.05em;
+      font-weight: 800;
+    }
+
+    .vital-hr {
+      color: #ef4444;
+    }
+
+    .vital-hr.alive {
+      color: #10b981;
+      text-shadow: 0 0 10px #10b981;
+    }
+
+    .vital-spo2 {
+      color: #00d4ff;
+    }
+
+    .vital-bp {
+      color: #f8fafc;
+    }
+
+    /* Defibrillator Action Bar */
+    .defib-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #020617;
+      border: 1.5px solid #334155;
+      border-radius: 8px;
+      padding: 6px 10px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .defib-dial-box {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75em;
+      color: #94a3b8;
+    }
+
+    .energy-pill {
+      background: #1e293b;
+      border: 1px solid #f59e0b;
+      color: #fbbf24;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .btn-shock-charge {
+      background: radial-gradient(circle, #ef4444, #991b1b);
+      color: #fff;
+      border: 2px solid #fca5a5;
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 0.85em;
+      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-shock-charge:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 22px rgba(239, 68, 68, 0.8);
+    }
+
+    .btn-shock-charge.ready-shock {
+      background: radial-gradient(circle, #f59e0b, #b45309);
+      border-color: #fef08a;
+      box-shadow: 0 0 25px #f59e0b;
+      animation: shockPulse 0.4s infinite alternate;
+    }
+
+    @keyframes shockPulse {
+      from {
+        transform: scale(1);
+        box-shadow: 0 0 15px #f59e0b;
+      }
+
+      to {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px #ef4444;
+      }
+    }
+
+    /* ========================================================
+       3. DIEBOLD / NCR REAL BANK ATM KIOSK (RBC & CGI)
+       ======================================================== */
+    .atm-kiosk-housing {
+      background: linear-gradient(180deg, #0f172a 0%, #032b43 50%, #020617 100%);
+      border: 3px solid #00d4ff;
+      border-radius: 16px;
+      padding: 14px 16px;
+      box-shadow: 0 0 25px rgba(0, 212, 255, 0.25), inset 0 0 20px rgba(0, 0, 0, 0.8);
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .atm-top-sign {
+      background: linear-gradient(90deg, #0284c7, #1d4ed8, #0284c7);
+      border: 1.5px solid #38bdf8;
+      border-radius: 6px;
+      padding: 4px 10px;
+      text-align: center;
+      font-weight: 800;
+      font-size: 0.84em;
+      letter-spacing: 1px;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+      margin-bottom: 6px;
+    }
+
+    .atm-layout-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .atm-layout-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ATM Interactive Display Screen */
+    .atm-screen-bezel {
+      background: #020617;
+      border: 1.5px solid #0284c7;
+      border-radius: 8px;
+      padding: 6px 8px;
+      box-shadow: inset 0 0 15px rgba(2, 132, 199, 0.25);
+      font-family: 'JetBrains Mono', monospace;
+      color: #38bdf8;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 95px;
+    }
+
+    .atm-screen-header {
+      font-size: 0.72em;
+      font-weight: 700;
+      border-bottom: 1px dashed rgba(56, 189, 248, 0.35);
+      padding-bottom: 3px;
+      display: flex;
+      justify-content: space-between;
+      color: #7dd3fc;
+    }
+
+    .atm-screen-msg {
+      font-size: 0.78em;
+      margin: 3px 0;
+      line-height: 1.35;
+    }
+
+    .atm-options-list {
+      display: flex;
+      gap: 4px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .atm-opt-pill {
+      font-size: 0.7em;
+      font-weight: 600;
+      padding: 2px 5px;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 4px;
+      color: #93c5fd;
+      transition: all 0.2s ease;
+    }
+
+    .atm-opt-pill.active-pill {
+      background: rgba(16, 185, 129, 0.25);
+      border-color: #10b981;
+      color: #a7f3d0;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+    }
+
+    /* ATM Hardware: Keypad & Card Slot */
+    .atm-hardware-panel {
+      background: #0b1329;
+      border: 1.5px solid #334155;
+      border-radius: 8px;
+      padding: 6px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 4px;
+    }
+
+    .card-reader-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #020617;
+      border: 1px solid #1e293b;
+      padding: 3px 6px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68em;
+      color: #94a3b8;
+    }
+
+    .card-slot-bezel {
+      width: 50px;
+      height: 8px;
+      background: #0f172a;
+      border: 1.5px solid #10b981;
+      border-radius: 3px;
+      position: relative;
+      box-shadow: 0 0 6px #10b981;
+      animation: cardBlink 1.2s infinite alternate;
+    }
+
+    @keyframes cardBlink {
+      from {
+        border-color: #059669;
+        box-shadow: 0 0 3px #059669;
+      }
+
+      to {
+        border-color: #34d399;
+        box-shadow: 0 0 8px #34d399;
+      }
+    }
+
+    .atm-keypad-mini {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .atm-key {
+      background: linear-gradient(180deg, #334155, #1e293b);
+      border: 1px solid #64748b;
+      border-radius: 3px;
+      padding: 2px 1px;
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72em;
+      font-weight: 700;
+      color: #f8fafc;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+      transition: all 0.1s ease;
+    }
+
+    .atm-key:hover {
+      background: #475569;
+    }
+
+    .atm-key:active {
+      transform: translateY(1px);
+    }
+
+    .key-enter {
+      background: #065f46;
+      border-color: #10b981;
+      color: #a7f3d0;
+    }
+
+    .key-cancel {
+      background: #7f1d1d;
+      border-color: #ef4444;
+      color: #fecaca;
+    }
+
+    /* Banknotes Fan-Out Container */
+    .cash-fan-out {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      width: 100%;
+      animation: cashSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .cash-fan-out.dispensed {
+      display: flex;
+    }
+
+    @keyframes cashSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .banknote {
+      background: linear-gradient(135deg, #15803d 0%, #166534 100%);
+      border: 1px solid #4ade80;
+      color: #f0fdf4;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      font-size: 0.74em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      box-shadow: 0 0 8px rgba(74, 222, 128, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .btn-atm-action {
+      background: radial-gradient(circle, #00d4ff, #0284c7);
+      color: #020617;
+      border: 2px solid #7dd3fc;
+      border-radius: 20px;
+      padding: 6px 18px;
+      font-size: 0.85em;
+      font-weight: 800;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-atm-action:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 22px rgba(0, 212, 255, 0.8);
+    }
+
+    .role-subcard {
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 3px solid var(--primary);
+      border-radius: 0 6px 6px 0;
+      padding: 8px 12px;
+      margin-bottom: 8px;
+    }
+
+    .role-subcard.subcard-medical {
+      border-left-color: #10b981;
+    }
+
+    .role-subcard.subcard-finance {
+      border-left-color: #00d4ff;
+    }
+
+    .role-subcard-title {
+      font-size: 0.95em;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .role-subcard-period {
+      font-size: 0.78em;
+      color: var(--text-dim);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: normal;
     }
 
     .exp-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 20px;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
 
     .exp-company {
-      font-size: 1.6em;
+      font-size: 1.3em;
       font-weight: 700;
       color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
     }
 
     .exp-period {
       color: var(--text-dim);
-      font-size: 0.9em;
+      font-size: 0.84em;
       font-family: 'JetBrains Mono', monospace;
     }
 
     .exp-role {
-      font-size: 1.2em;
+      font-size: 0.95em;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-top: 4px;
+      margin-bottom: 2px;
+      padding-bottom: 2px;
       color: var(--text);
+      letter-spacing: 0.2px;
     }
 
     .exp-achievements {
       display: grid;
-      gap: 15px;
+      gap: 6px;
     }
 
     .achievement {
       display: flex;
-      gap: 12px;
-      line-height: 1.7;
+      gap: 8px;
+      line-height: 1.45;
+      font-size: 0.86em;
     }
 
     .achievement-bullet {
@@ -728,10 +2320,10 @@
     .metric {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
-      padding: 2px 10px;
-      border-radius: 6px;
+      padding: 1px 6px;
+      border-radius: 4px;
       font-weight: 700;
-      font-size: 0.9em;
+      font-size: 0.85em;
       white-space: nowrap;
       display: inline-block;
     }
@@ -740,9 +2332,9 @@
       font-family: 'JetBrains Mono', monospace;
       background: rgba(0, 212, 255, 0.1);
       color: var(--primary);
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.85em;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: 0.82em;
       font-weight: 600;
     }
 
@@ -1015,27 +2607,29 @@
     <section id="home" class="dashboard-hero hero">
       <div class="dashboard-grid">
         <div class="hero-left hero-content">
-          <div class="hero-label">🤖 Lead AI Developer</div>
+          <div class="hero-label">⚡ Senior Data Engineer @ Haptiq</div>
           <h1>Building Intelligent Systems That Scale</h1>
           <p class="hero-subtitle">
-            Specialized in <strong>Document AI</strong>, <strong>NLP</strong>, and <strong>LLM-powered
-              applications</strong>. Professional results with measurable impact.
+            Specialized in <strong>Near Real-Time Data Pipelines</strong>, <strong>AI Agents (Text-to-SQL, Claude Code,
+              Cursor)</strong>, and <strong>Snowflake Analytics</strong>.
           </p>
 
           <div class="hero-bio-container hero-bio">
-            <p><strong>From auditing financial institutions to architecting AI systems</strong>—I've transformed my
-              analytical foundation into cutting-edge machine learning solutions. Now leading AI development at a
-              healthcare start-up, I turn chaotic medical documents into structured intelligence with <strong>zero false
-                positives</strong>.</p>
-            <p><strong>My mission:</strong> Build <em>secure</em>, <em>private</em>, and <em>scalable</em> AI systems
-              that deliver measurable business impact. From robust ETL data pipelines to production-grade ML—every
-              system I architect is built for enterprise, not just proof-of-concept.</p>
+            <p><strong>From auditing financial institutions to architecting modern AI & data
+                infrastructure</strong>—I've transformed my
+              analytical foundation into cutting-edge data engineering and AI agent solutions. Currently Senior Data
+              Engineer at Haptiq, I architect near real-time ETL pipelines, AI-ready data models, and enterprise
+              AI-driven workflows.</p>
+            <p><strong>My mission:</strong> Build <em>secure</em>, <em>scalable</em>, and <em>governed</em> data & AI
+              systems
+              that deliver measurable business impact—reducing compute costs by 48% and accelerating developer
+              productivity through AI agent practices.</p>
           </div>
 
           <div class="hero-stats">
             <div class="stat-box">
-              <span class="stat-number">4+</span>
-              <span class="stat-label">Years Exp.</span>
+              <span class="stat-number">48%</span>
+              <span class="stat-label">Cost Savings</span>
             </div>
             <div class="stat-box">
               <span class="stat-number">50%→90%</span>
@@ -1083,15 +2677,15 @@
           <div class="dashboard-highlights">
             <div class="highlight-item">
               <div class="highlight-label">Specialization</div>
-              <div class="highlight-value">Document Intelligence & LLM Pipelines</div>
+              <div class="highlight-value">Data Architecture, Text-to-SQL & AI Agents</div>
             </div>
             <div class="highlight-item">
               <div class="highlight-label">Production Impact</div>
-              <div class="highlight-value">83% Extraction Hit Rate / 5hr→30min Reports</div>
+              <div class="highlight-value">48% Compute Cost Reduction / Real-Time ETL</div>
             </div>
             <div class="highlight-item">
               <div class="highlight-label">Core Stack</div>
-              <div class="highlight-value">AWS Bedrock, SageMaker, Neo4j, LangChain</div>
+              <div class="highlight-value">Snowflake, dbt, Prefect, Claude Code, Cursor AI</div>
             </div>
             <div class="highlight-item">
               <div class="highlight-label">Location</div>
@@ -1109,219 +2703,736 @@
           <span class="section-icon">💼</span>
           Experience
         </h2>
-        <p class="section-subtitle">Delivering measurable AI/ML impact across healthcare and finance</p>
+        <p class="section-subtitle">Delivering measurable AI/ML impact across healthcare, finance, gaming and casino
+        </p>
       </div>
 
-      <div class="experience-grid">
-
-        <div class="exp-card">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company">SiftMed</div>
-              <div class="exp-role">Lead AI Developer | NLP & LLM Expert</div>
-            </div>
-            <div class="exp-period">Jul 2025 – Feb 2026</div>
+      <!-- Horizontal Company Selector Tabs (5 Companies) -->
+      <div class="exp-tabs-nav">
+        <button class="exp-tab-btn active tab-haptiq" onclick="goToSlide(0)" id="tabBtn0">
+          <div class="tab-header-top">
+            <span class="tab-company-name">🎰 Haptiq</span>
+            <span class="tab-period-badge">2026 – Pres.</span>
           </div>
-          <div class="exp-achievements">
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Improved page stream segmentation accuracy <span class="metric">50% → 90%</span> using <span
-                  class="tech">Strands Agents</span> with foundational models (<span class="tech">Claude Sonnet</span>,
-                <span class="tech">Haiku</span>) on <span class="tech">AWS Bedrock</span></span>
+          <div class="tab-role-sub">Sr. Data Engineer • Casino Data</div>
+        </button>
+
+        <button class="exp-tab-btn tab-siftmed" onclick="goToSlide(1)" id="tabBtn1">
+          <div class="tab-header-top">
+            <span class="tab-company-name">🏥 SiftMed</span>
+            <span class="tab-period-badge">2022 – 2026</span>
+          </div>
+          <div class="tab-role-sub">Lead AI Dev • Medical AI</div>
+        </button>
+
+        <button class="exp-tab-btn tab-rbc" onclick="goToSlide(2)" id="tabBtn2">
+          <div class="tab-header-top">
+            <span class="tab-company-name">🏦 RBC</span>
+            <span class="tab-period-badge">2025</span>
+          </div>
+          <div class="tab-role-sub">Lead Data Eng • Banking</div>
+        </button>
+
+        <button class="exp-tab-btn tab-nscc" onclick="goToSlide(3)" id="tabBtn3">
+          <div class="tab-header-top">
+            <span class="tab-company-name">🤖 NSCC</span>
+            <span class="tab-period-badge">2023 – 2024</span>
+          </div>
+          <div class="tab-role-sub">Research Assoc • AI Robot</div>
+        </button>
+
+        <button class="exp-tab-btn tab-cgi" onclick="goToSlide(4)" id="tabBtn4">
+          <div class="tab-header-top">
+            <span class="tab-company-name">⚖️ CGI</span>
+            <span class="tab-period-badge">2022</span>
+          </div>
+          <div class="tab-role-sub">Data Eng • SOX & Audit</div>
+        </button>
+      </div>
+
+      <!-- Direct Experience Tab Panels Container -->
+      <div class="exp-panels-container">
+        <div class="exp-panels-track" id="expPanelsTrack">
+
+        <!-- PANEL 0: HAPTIQ -->
+        <div class="exp-panel active" id="expPanel0">
+          <div class="exp-card" id="haptiqCard">
+            <div class="exp-header">
+              <div>
+                <div class="exp-company">
+                  Haptiq
+                  <span class="industry-badge casino-badge">🎰 Casino & iGaming AI</span>
+                </div>
+                <div class="exp-role">Senior Data Engineer</div>
+              </div>
+              <div class="exp-period">Feb 2026 – Present</div>
             </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Engineered intelligent redundant page detection system achieving <span class="metric">zero false
-                  positives</span> in duplicate identification—ensuring flawless document integrity using <span
-                  class="tech">foundational models</span></span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Established end-to-end <span class="tech">ETL evaluation pipeline</span> for production monitoring
-                using <span class="tech">AWS EventBridge</span>, <span class="tech">Step Functions</span>, and <span
-                  class="tech">MySQL</span></span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Designing scalable document intelligence pipelines with <span class="tech">AWS Bedrock</span>, <span
-                  class="tech">Lambda</span>, <span class="tech">Textract</span>, <span class="tech">Step
-                  Functions</span>, and <span class="tech">SageMaker</span></span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Driving R&D initiatives for <span class="tech">medical text extraction</span>, <span
-                  class="tech">summarization</span>, and <span class="tech">structured data generation</span></span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Mentored junior engineers on <span class="tech">LLM guardrails</span> for hallucination
-                prevention—identified key vulnerability points for <span class="tech">prompt injection</span> attacks
-                and defined <span class="tech">input/output validation rules</span> with structural components to guide
-                and restrict model behavior</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Guided junior developers in refining <span class="tech">RAG pipelines</span>—covering vector
-                database setup, embedding strategies, and retrieval optimization for document-based Q&A systems</span>
+
+            <!-- Split Screen: Left Machine | Right Achievements -->
+            <div class="exp-split-layout">
+              <!-- Left Column: Vegas Slot Machine -->
+              <div class="exp-machine-col" id="haptiqMachineCol">
+                <div class="slot-cabinet">
+                  <div class="marquee-header">
+                    <div class="marquee-title">★ JACKPOT SLOTS ★</div>
+                    <div class="marquee-bulbs">
+                      <div class="bulb"></div>
+                      <div class="bulb"></div>
+                      <div class="bulb"></div>
+                      <div class="bulb"></div>
+                      <div class="bulb"></div>
+                      <div class="bulb"></div>
+                      <div class="bulb"></div>
+                      <div class="bulb"></div>
+                      <div class="bulb"></div>
+                    </div>
+                  </div>
+
+                  <div class="slot-main-stage">
+                    <div class="reels-casing">
+                      <div class="reels-grid">
+                        <div class="reel-cylinder" id="reel1">7️⃣</div>
+                        <div class="reel-cylinder" id="reel2">🎰</div>
+                        <div class="reel-cylinder" id="reel3">💎</div>
+                      </div>
+                    </div>
+
+                    <div class="lever-assembly" id="slotLever" onclick="pullSlotLever()" title="Pull Lever to Spin!">
+                      <div class="lever-knob"></div>
+                      <div class="lever-shaft"></div>
+                      <div class="lever-base"></div>
+                    </div>
+                  </div>
+
+                  <div class="slot-controls">
+                    <button class="btn-arcade-spin" id="slotSpinBtn" onclick="spinSlotMachine()">
+                      <span>🎰 SPIN REELS</span>
+                    </button>
+                    <div class="slot-banner-lcd" id="slotBanner">
+                      🎲 Pull lever or press SPIN to unlock experience!
+                    </div>
+                    <!-- Key Dynamic Badges (Populated on trigger) -->
+                    <div class="haptiq-key-tags" id="haptiqKeyTags"
+                      style="display: none; width: 100%; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 8px;">
+                      <span class="skill-tag"
+                        style="font-size: 0.78em; padding: 4px 10px; background: rgba(245,158,11,0.25); border: 1px solid #f59e0b; color: #fef3c7;">⚡
+                        Prefect + Snowflake ETL</span>
+                      <span class="skill-tag"
+                        style="font-size: 0.78em; padding: 4px 10px; background: rgba(56,189,248,0.25); border: 1px solid #38bdf8; color: #e0f2fe;">🤖
+                        Text-to-SQL AI Agents</span>
+                      <span class="skill-tag"
+                        style="font-size: 0.78em; padding: 4px 10px; background: rgba(16,185,129,0.25); border: 1px solid #10b981; color: #d1fae5;">💰
+                        48% Cost Reduction</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Achievements & Role Details -->
+              <div class="exp-details-col" id="haptiqRightCol">
+                <div class="exp-lock-placeholder" id="haptiqLockHint">
+                  <div class="lock-icon-huge">🎰</div>
+                  <div class="lock-cta-title">Haptiq Experience Locked</div>
+                  <div class="lock-cta-sub">Pull the <strong>"SLOT LEVER"</strong> or press <strong>"SPIN
+                      REELS"</strong> to reveal achievements!</div>
+                </div>
+
+                <div class="exp-content-lock" id="haptiqDetails">
+                  <div class="exp-achievements">
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>Near Real-Time ETL:</strong> Architected scalable streaming & batch pipelines using
+                        <span class="tech">Prefect</span>, <span class="tech">dbt</span>, and <span
+                          class="tech">Snowflake</span> for analytics and gaming data modeling.</span>
+                    </div>
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>Text-to-SQL AI Agents:</strong> Built AI data models with domain semantics,
+                        evaluation benchmarks, and prompt-engineered SQL accuracy frameworks.</span>
+                    </div>
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>Agentic AI Workflows:</strong> Deployed <span class="tech">Claude Code</span> and
+                        <span class="tech">Cursor AI</span> agents with <span class="tech">JIRA / Confluence</span> for
+                        automated documentation and team velocity.</span>
+                    </div>
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>Data Governance & Security:</strong> Enforced <span class="tech">dbt tests</span>,
+                        automated validation, and PII masking for sensitive gaming transactions.</span>
+                    </div>
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>48% Cost Optimization:</strong> Slashed <span class="tech">Snowflake</span> compute
+                        costs by <span class="metric">48%</span> via query refactoring, model tuning, and token
+                        efficiency.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="exp-card">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company">SiftMed</div>
-              <div class="exp-role">Senior Machine Learning Engineer | NLP & LLM Specialist</div>
+        <!-- PANEL 1: SIFTMED -->
+        <div class="exp-panel" id="expPanel1">
+          <div class="exp-card" id="siftmedCard">
+            <div class="exp-header">
+              <div>
+                <div class="exp-company">
+                  SiftMed
+                  <span class="industry-badge medical-badge">🏥 Healthcare & Medical AI</span>
+                </div>
+                <div class="exp-role">Lead AI Developer & Senior ML Engineer</div>
+              </div>
+              <div class="exp-period">Oct 2022 – Feb 2026</div>
             </div>
-            <div class="exp-period">Oct 2022 – May 2025</div>
-          </div>
-          <div class="exp-achievements">
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Accelerated processing speeds <span class="metric">~70%</span> leveraging <span
-                  class="tech">PySpark</span> and <span class="tech">Pandas</span> for computational efficiency</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Fine-tuned state-of-the-art models (<span class="tech">BERT</span>, <span class="tech">DiT</span>,
-                <span class="tech">ViT</span>, <span class="tech">GLiNER</span>) for token classification and NLP tasks
-                using transfer learning</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Deployed <span class="tech">LLMs/SLMs</span> (<span class="tech">Llama3</span>, <span
-                  class="tech">Gamma</span>, <span class="tech">Phi-3</span>) for information retrieval and <span
-                  class="tech">LLaVA1.6</span> for layout parsing</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Developed and fine-tuned ML/NLP models on <span class="tech">AWS SageMaker</span> for automated
-                decision-making processes</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Built robust data pipelines on <span class="tech">Amazon S3</span> for model training and inference
-                workflows</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Contributed to infrastructure using <span class="tech">Terraform</span>, <span
-                  class="tech">Docker</span>, <span class="tech">ECS</span>, <span class="tech">CloudFormation</span>,
-                and <span class="tech">Step Functions</span></span>
+
+            <!-- Split Screen: Left Machine | Right Achievements -->
+            <div class="exp-split-layout">
+              <!-- Left Column: LifePak Defibrillator Monitor -->
+              <div class="exp-machine-col" id="siftmedMachineCol">
+                <div class="med-monitor-housing">
+                  <div class="med-bezel-top">
+                    <span>🩻 LIFEPAK MONITOR</span>
+                    <span id="medAlarmStatus" style="color: #ef4444; font-weight: 700;">⚠️ NO RHYTHM</span>
+                  </div>
+
+                  <div class="med-screen-grid">
+                    <div class="crt-oscilloscope" id="crtOscilloscope">
+                      <div class="ecg-lead-label">LEAD II • 25mm/s</div>
+                      <div class="crt-flash-overlay" id="crtFlash"></div>
+                      <canvas id="ecgCanvas" width="650" height="80"
+                        style="width:100%; height:100%; display:block; position:relative; z-index:3;"></canvas>
+                    </div>
+
+                    <div class="vitals-hud">
+                      <div class="vital-row">
+                        <span class="vital-name">HR (BPM)</span>
+                        <span class="vital-val vital-hr" id="hudHr">00</span>
+                      </div>
+                      <div class="vital-row">
+                        <span class="vital-name">SpO2 (%)</span>
+                        <span class="vital-val vital-spo2" id="hudSpo2">--</span>
+                      </div>
+                      <div class="vital-row">
+                        <span class="vital-name">NIBP</span>
+                        <span class="vital-val vital-bp" id="hudBp">--/--</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="defib-controls">
+                    <div class="defib-dial-box">
+                      <span>ENERGY:</span>
+                      <span class="energy-pill">200J</span>
+                    </div>
+                    <button class="btn-shock-charge" id="medDefibBtn" onclick="chargeAndShockDefib()">
+                      <span>⚡ DELIVER SHOCK</span>
+                    </button>
+                    <!-- Key Dynamic Badges (Populated on trigger) -->
+                    <div class="siftmed-key-tags" id="siftmedKeyTags"
+                      style="display: none; width: 100%; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 10px;">
+                      <span class="skill-tag"
+                        style="font-size: 0.78em; padding: 4px 10px; background: rgba(16,185,129,0.25); border: 1px solid #10b981; color: #d1fae5;">🏥
+                        50% → 90% Segmentation</span>
+                      <span class="skill-tag"
+                        style="font-size: 0.78em; padding: 4px 10px; background: rgba(168,85,247,0.25); border: 1px solid #c084fc; color: #f3e8ff;">🧠
+                        Strands AI Agents</span>
+                      <span class="skill-tag"
+                        style="font-size: 0.78em; padding: 4px 10px; background: rgba(56,189,248,0.25); border: 1px solid #38bdf8; color: #e0f2fe;">🚀
+                        PySpark ~70% Speedup</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Achievements & Role Details -->
+              <div class="exp-details-col" id="siftmedRightCol">
+                <div class="exp-lock-placeholder" id="siftmedLockHint">
+                  <div class="lock-icon-huge">🫀</div>
+                  <div class="lock-cta-title">SiftMed Experience Locked</div>
+                  <div class="lock-cta-sub">Press <strong>"DELIVER SHOCK"</strong> on the cardiac defibrillator to
+                    reveal achievements!</div>
+                </div>
+
+                <div class="exp-content-lock" id="siftmedDetails">
+                  <div class="role-subcard subcard-medical">
+                    <div class="role-subcard-title">
+                      <span>Lead AI Developer | NLP & LLM Expert</span>
+                      <span class="role-subcard-period">Jul 2025 – Feb 2026</span>
+                    </div>
+                    <div class="exp-achievements">
+                      <div class="achievement">
+                        <span class="achievement-bullet">▸</span>
+                        <span><strong>Multi-Agent Segmentation (50% → 90%):</strong> Engineered Python multi-agent system (<span class="tech">Strands</span>) improving stream accuracy to <span class="metric">90%</span> with <span class="metric">20x</span> speedup vs manual review.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet">▸</span>
+                        <span><strong>Automated A/B Evaluation & RAG:</strong> Built automated <span class="tech">AWS Step Functions</span> testing pipeline for data-driven LLM selection & vector RAG optimization.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet">▸</span>
+                        <span><strong>Strategic GCP R&D POC:</strong> Conducted cost-benefit POC with <span class="tech">Vertex AI & Gemini</span> for multi-cloud architectural optimization.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet">▸</span>
+                        <span><strong>LLM Guardrails & SOC2 Compliance:</strong> Implemented prompt injection defenses and validation guardrails to achieve <span class="tech">SOC2</span> compliance.</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="role-subcard subcard-medical" style="margin-top: 12px;">
+                    <div class="role-subcard-title">
+                      <span>Senior ML Engineer | NLP & LLM Specialist</span>
+                      <span class="role-subcard-period">Oct 2022 – May 2025</span>
+                    </div>
+                    <div class="exp-achievements">
+                      <div class="achievement">
+                        <span class="achievement-bullet">▸</span>
+                        <span><strong>~70% Processing Acceleration:</strong> Slashed compute time leveraging <span
+                            class="tech">PySpark</span> and optimized <span class="tech">Pandas</span>.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet">▸</span>
+                        <span><strong>SOTA Fine-Tuning:</strong> Fine-tuned <span class="tech">BERT</span>, <span
+                            class="tech">DiT</span>, <span class="tech">ViT</span>, and <span class="tech">GLiNER</span>
+                          for medical token classification and NLP.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet">▸</span>
+                        <span><strong>LLM/SLM Deployments:</strong> Deployed <span class="tech">Llama3</span>, <span
+                            class="tech">Phi-3</span>, and <span class="tech">LLaVA1.6</span> for layout parsing and
+                          document retrieval on <span class="tech">SageMaker</span>.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet">▸</span>
+                        <span><strong>Cloud Infrastructure:</strong> Automated cloud pipelines with <span
+                            class="tech">Terraform</span>, <span class="tech">Docker</span>, <span
+                            class="tech">ECS</span>, and <span class="tech">S3</span>.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="exp-card">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company">Royal Bank of Canada</div>
-              <div class="exp-role">Lead Data Engineer</div>
+        <!-- PANEL 2: RBC (Royal Bank of Canada) -->
+        <div class="exp-panel" id="expPanel2">
+          <div class="exp-card" id="rbcCard">
+            <div class="exp-header">
+              <div>
+                <div class="exp-company">
+                  Royal Bank of Canada
+                  <span class="industry-badge finance-badge">🏦 Banking & Financial Systems</span>
+                </div>
+                <div class="exp-role">Lead Data Engineer</div>
+              </div>
+              <div class="exp-period">May 2025 – Jul 2025</div>
             </div>
-            <div class="exp-period">May 2025 – Jul 2025</div>
-          </div>
-          <div class="exp-achievements">
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Set up and maintained <span class="tech">Neo4j</span> graph database for enterprise knowledge
-                networks</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Developed <span class="tech">OCR APIs</span> using <span class="tech">PaddleOCR</span> for
-                large-scale document ingestion and processing</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Built secure <span class="tech">ETL pipelines</span> from NAS drives → Neo4j with validation layers
-                for data consistency</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Automated <span class="tech">GitHub-to-VM</span> deployments via <span class="tech">Ansible</span>,
-                improving delivery reliability</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Supported teams with Neo4j integration, API setup, and <span class="tech">SageMaker</span>
-                environment provisioning</span>
+
+            <!-- Split Screen: Left Machine | Right Achievements -->
+            <div class="exp-split-layout">
+              <!-- Left Column: Diebold / NCR ATM Kiosk -->
+              <div class="exp-machine-col" id="rbcMachineCol">
+                <div class="atm-kiosk-housing">
+                  <div class="atm-top-sign">🏦 RBC ATM</div>
+
+                  <div class="atm-layout-grid">
+                    <!-- ATM Screen -->
+                    <div class="atm-screen-bezel">
+                      <div class="atm-screen-header">
+                        <span>SESSION: 256-BIT</span>
+                        <span id="atmStatusIndicator" style="color: #10b981;">● ONLINE</span>
+                      </div>
+                      <div class="atm-screen-msg" id="atmScreenMsg">
+                        <div style="color: #94a3b8; font-size: 0.8em; margin-bottom: 3px;">STATUS:</div>
+                        <div id="atmMainPrompt" style="color: #38bdf8; font-weight: 700; font-size: 0.98em;">[ INSERT
+                          PIN / WITHDRAW ]</div>
+                        <div id="atmPinDisplay" style="color: #cbd5e1; font-size: 0.84em; margin-top: 4px;">PIN: [ • • •
+                          • ]</div>
+                      </div>
+                      <div class="atm-options-list">
+                        <span class="atm-opt-pill" id="optNeo4j">[1] Fast Cash</span>
+                        <span class="atm-opt-pill" id="optOcr">[2] Balance</span>
+                        <span class="atm-opt-pill" id="optCicd">[3] Deposit</span>
+                      </div>
+                    </div>
+
+                    <!-- ATM Hardware: Card Slot & Keypad -->
+                    <div class="atm-hardware-panel">
+                      <div class="card-reader-row">
+                        <span>CHIP CARD</span>
+                        <div class="card-slot-bezel" title="Card Reader Active"></div>
+                      </div>
+
+                      <div class="atm-keypad-mini">
+                        <div class="atm-key" onclick="pressAtmKey('1')">1</div>
+                        <div class="atm-key" onclick="pressAtmKey('2')">2</div>
+                        <div class="atm-key" onclick="pressAtmKey('3')">3</div>
+                        <div class="atm-key" onclick="pressAtmKey('4')">4</div>
+                        <div class="atm-key" onclick="pressAtmKey('5')">5</div>
+                        <div class="atm-key" onclick="pressAtmKey('6')">6</div>
+                        <div class="atm-key" onclick="pressAtmKey('7')">7</div>
+                        <div class="atm-key" onclick="pressAtmKey('8')">8</div>
+                        <div class="atm-key" onclick="pressAtmKey('9')">9</div>
+                        <div class="atm-key key-cancel" onclick="pressAtmKey('X')">CAN</div>
+                        <div class="atm-key" onclick="pressAtmKey('0')">0</div>
+                        <div class="atm-key key-enter" onclick="withdrawAtmCash()">ENT</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Dispensed Banknotes (Revealed on click) -->
+                  <div class="cash-fan-out" id="atmCashFan"
+                    style="display: none; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 8px;">
+                    <div class="banknote">💵 $100 [NEO4J]</div>
+                    <div class="banknote">💵 $100 [OCR ETL]</div>
+                    <div class="banknote">💵 $100 [ANSIBLE]</div>
+                  </div>
+
+                  <!-- Key Dynamic Badges (Populated on trigger) -->
+                  <div class="rbc-key-tags" id="rbcKeyTags"
+                    style="display: none; width: 100%; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 8px;">
+                    <span class="skill-tag"
+                      style="font-size: 0.78em; padding: 4px 10px; background: rgba(2,132,199,0.25); border: 1px solid #38bdf8; color: #e0f2fe;">⚡
+                      Neo4j Enterprise Graph</span>
+                    <span class="skill-tag"
+                      style="font-size: 0.78em; padding: 4px 10px; background: rgba(16,185,129,0.25); border: 1px solid #10b981; color: #d1fae5;">📄
+                      PaddleOCR Pipelines</span>
+                    <span class="skill-tag"
+                      style="font-size: 0.78em; padding: 4px 10px; background: rgba(168,85,247,0.25); border: 1px solid #c084fc; color: #f3e8ff;">🚀
+                      Ansible CI/CD Deployments</span>
+                  </div>
+
+                  <div style="display: flex; justify-content: center; align-items: center; margin-top: 8px;">
+                    <button class="btn-atm-action" id="atmWithdrawBtn" onclick="withdrawAtmCash()"
+                      style="width: 100%; justify-content: center;">
+                      <span>💵 WITHDRAW CASH</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Achievements & Role Details -->
+              <div class="exp-details-col" id="rbcRightCol">
+                <div class="exp-lock-placeholder" id="rbcLockHint">
+                  <div class="lock-icon-huge">💳</div>
+                  <div class="lock-cta-title">RBC Experience Locked</div>
+                  <div class="lock-cta-sub">Press <strong>"WITHDRAW CASH"</strong> on the ATM to reveal achievements!
+                  </div>
+                </div>
+
+                <div class="exp-content-lock" id="rbcDetails">
+                  <div class="exp-achievements">
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>Neo4j Enterprise Graph:</strong> Built and maintained graph database clusters for
+                        enterprise banking knowledge networks.</span>
+                    </div>
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>Large-Scale OCR Ingestion:</strong> Developed ingestion APIs with <span
+                          class="tech">PaddleOCR</span> and secure ETL from NAS drives to Neo4j.</span>
+                    </div>
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>Automated CI/CD & Deployments:</strong> Automated GitHub-to-VM pipelines with <span
+                          class="tech">Ansible</span> and provisioned <span class="tech">SageMaker</span>
+                        environments.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="exp-card">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company">Nova Scotia Community College</div>
-              <div class="exp-role">Casual Research Associate</div>
+        <!-- PANEL 3: NSCC (Research Associate - Robot) -->
+        <div class="exp-panel" id="expPanel3">
+          <div class="exp-card" id="nsccCard">
+            <div class="exp-header">
+              <div>
+                <div class="exp-company">
+                  Nova Scotia Community College
+                  <span class="industry-badge"
+                    style="background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3);">🤖
+                    Applied AI & Research Robot</span>
+                </div>
+                <div class="exp-role">Casual Research Associate</div>
+              </div>
+              <div class="exp-period">Sep 2023 – Feb 2024</div>
             </div>
-            <div class="exp-period">Sep 2023 – Feb 2024</div>
-          </div>
-          <div class="exp-achievements">
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Achieved <span class="metric">83% hit rate</span> on PIVP Invest Nova Scotia research project
-                through model fine-tuning and <span class="tech">RAG</span> implementation</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Improved accuracy <span class="metric">~10%</span> vs leading open-source models using fine-tuned
-                datasets and LLM optimization</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Implemented <span class="tech">RAG</span> pipeline using <span class="tech">LangChain</span>, <span
-                  class="tech">Pinecone</span>, and fine-tuned <span class="tech">7B open-source model</span></span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Overcame complex data extraction from web PDFs using <span class="tech">LLMSherpa</span> and <span
-                  class="tech">LangChain</span> for advanced chunking</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Delivered bi-weekly presentations to stakeholders, aligning with business objectives</span>
+
+            <!-- Split Screen: Left Machine | Right Achievements -->
+            <div class="exp-split-layout">
+              <!-- Left Column: Interactive Cyber Research Robot -->
+              <div class="exp-machine-col" id="nsccMachineCol">
+                <div class="robot-droid-housing">
+                  <div class="robot-top-sign">🤖 RESEARCH ROBOT</div>
+
+                  <!-- Robot Avatar -->
+                  <div class="robot-avatar-assembly">
+                    <div class="robot-head-chassis">
+                      <div class="robot-antenna left">
+                        <div class="antenna-tip"></div>
+                      </div>
+                      <div class="robot-antenna right">
+                        <div class="antenna-tip"></div>
+                      </div>
+
+                      <div class="robot-visor-screen" id="robotVisor">
+                        <div class="robot-eye" id="robotEyeL"></div>
+                        <div class="robot-eye" id="robotEyeR"></div>
+                      </div>
+
+                      <div class="robot-mouth-matrix" id="robotMouth">
+                        <div class="mouth-bar"></div>
+                        <div class="mouth-bar"></div>
+                        <div class="mouth-bar"></div>
+                        <div class="mouth-bar"></div>
+                        <div class="mouth-bar"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="robot-dialog-terminal" id="robotDialog">
+                    🤖 <strong>SYSTEM READY.</strong> PRESS ACTIVATE TO BEGIN.
+                  </div>
+
+                  <!-- Telemetry Status Badges (Populated on click) -->
+                  <div class="robot-telemetry-pills">
+                    <div class="robot-stat-pill">
+                      <div class="robot-stat-label">AI MODEL</div>
+                      <div class="robot-stat-value">7B LLM</div>
+                    </div>
+                    <div class="robot-stat-pill">
+                      <div class="robot-stat-label">HIT RATE</div>
+                      <div class="robot-stat-value" id="robotHitRate" style="color: #94a3b8;">-- %</div>
+                    </div>
+                    <div class="robot-stat-pill">
+                      <div class="robot-stat-label">BENCHMARK</div>
+                      <div class="robot-stat-value" id="robotBenchScore" style="color: #94a3b8;">STANDBY</div>
+                    </div>
+                  </div>
+
+                  <!-- Key Research Findings (Revealed on click) -->
+                  <div class="robot-key-findings" id="robotFindings"
+                    style="display: none; width: 100%; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 6px;">
+                    <span class="skill-tag"
+                      style="font-size: 0.78em; padding: 4px 10px; background: rgba(168,85,247,0.25); border: 1px solid #c084fc; color: #f3e8ff;">⚡
+                      Pinecone Vector RAG</span>
+                    <span class="skill-tag"
+                      style="font-size: 0.78em; padding: 4px 10px; background: rgba(56,189,248,0.25); border: 1px solid #38bdf8; color: #e0f2fe;">📄
+                      LLMSherpa Chunking</span>
+                    <span class="skill-tag"
+                      style="font-size: 0.78em; padding: 4px 10px; background: rgba(16,185,129,0.25); border: 1px solid #10b981; color: #d1fae5;">🎯
+                      83% Hit Rate</span>
+                  </div>
+
+                  <!-- Action Button -->
+                  <button class="btn-robot-action" id="nsccScanBtn" onclick="runResearchScanner()"
+                    style="width: 100%; justify-content: center; margin-top: 6px;">
+                    <span>🤖 ACTIVATE ROBOT</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Right Column: Achievements & Role Details -->
+              <div class="exp-details-col" id="nsccRightCol">
+                <div class="exp-lock-placeholder" id="nsccLockHint">
+                  <div class="lock-icon-huge">🤖</div>
+                  <div class="lock-cta-title">NSCC Research Locked</div>
+                  <div class="lock-cta-sub">Press <strong>"ACTIVATE ROBOT"</strong> on the droid to reveal achievements!
+                  </div>
+                </div>
+
+                <div class="exp-content-lock" id="nsccDetails">
+                  <div class="role-subcard" style="background: rgba(168, 85, 247, 0.08); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 12px; padding: 14px 16px;">
+                    <div class="role-subcard-title" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px dashed rgba(168, 85, 247, 0.4); padding-bottom: 6px; margin-bottom: 10px; font-weight: 700; color: #c084fc;">
+                      <span>PIVP Invest Nova Scotia Research Grant</span>
+                      <span class="role-subcard-period">May 2024 – Aug 2024</span>
+                    </div>
+                    <div class="exp-achievements">
+                      <div class="achievement">
+                        <span class="achievement-bullet" style="color: #c084fc;">▸</span>
+                        <span><strong>Production LLM & RAG Leadership:</strong> Led and executed a production-ready project utilizing LLMs and proposed RAG solutions for automated decision-making.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet" style="color: #c084fc;">▸</span>
+                        <span><strong>Data Extraction 📊:</strong> Overcame challenges with web PDFs and webpage data sources, leveraging <span class="tech">LLMSherpa</span> and <span class="tech">LangChain</span> for effective chunking.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet" style="color: #c084fc;">▸</span>
+                        <span><strong>Vector Database 🗄️:</strong> Utilized <span class="tech">Pinecone</span> for efficient vector data indexing and rapid semantic search.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet" style="color: #c084fc;">▸</span>
+                        <span><strong>Embedding Model 🤖:</strong> Compared, benchmarked, and visualized multiple embedding models for optimal retrieval performance.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet" style="color: #c084fc;">▸</span>
+                        <span><strong>Dataset Creation & Prompting 📚:</strong> Developed context-question pairs for embedding fine-tuning using a <span class="tech">7B</span> open-source model and refined prompts.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet" style="color: #c084fc;">▸</span>
+                        <span><strong>83% Hit Rate Achievements 🏆:</strong> Achieved an impressive <span class="metric">83% hit rate</span> with fine-tuned datasets—improving hit rates by <span class="metric">~10%</span> vs top SOTA models.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet" style="color: #c084fc;">▸</span>
+                        <span><strong>Generative Model & Synthesis 🔄:</strong> Extracted relevant context from vector database for LLM input, enhancing generation through effective prompt engineering.</span>
+                      </div>
+                      <div class="achievement">
+                        <span class="achievement-bullet" style="color: #c084fc;">▸</span>
+                        <span><strong>Stakeholder Alignment 🤝:</strong> Conducted bi-weekly sprint presentations to ensure strict alignment with grant objectives and business requirements.</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="exp-card">
-          <div class="exp-header">
-            <div>
-              <div class="exp-company">CGI</div>
-              <div class="exp-role">Data Engineer – Internal Audit</div>
+        <!-- PANEL 4: CGI (Internal Audit & RPA) -->
+        <div class="exp-panel" id="expPanel4">
+          <div class="exp-card" id="cgiCard">
+            <div class="exp-header">
+              <div>
+                <div class="exp-company">
+                  CGI
+                  <span class="industry-badge"
+                    style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3);">⚖️
+                    Enterprise Internal Audit & Compliance</span>
+                </div>
+                <div class="exp-role">Data Engineer – Internal Audit</div>
+              </div>
+              <div class="exp-period">Feb 2022 – Oct 2022</div>
             </div>
-            <div class="exp-period">Feb 2022 – Oct 2022</div>
-          </div>
-          <div class="exp-achievements">
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Improved RPA BOT efficiency <span class="metric">80%</span> by resolving bugs and creating features
-                for business automation</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Built <span class="tech">ETL pipelines</span> using <span class="tech">Dataiku</span> for
-                multi-million-dollar Risk Assessment Classifier project</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Developed anomaly detection reporting tool using <span class="tech">Selenium</span> for improved
-                report accuracy</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Collaborated with data scientists and business stakeholders following <span
-                  class="tech">Agile</span> methodology</span>
-            </div>
-            <div class="achievement">
-              <span class="achievement-bullet">▸</span>
-              <span>Learned and adapted to <span class="tech">Blue Prism</span> and <span class="tech">OpenShift</span>
-                for project requirements</span>
+
+            <!-- Split Screen: Left Machine | Right Achievements -->
+            <div class="exp-split-layout">
+              <!-- Left Column: Audit Compliance Matrix Console -->
+              <div class="exp-machine-col" id="cgiMachineCol">
+                <div class="cgi-audit-housing">
+                  <div class="cgi-top-sign">⚖️ INTERNAL AUDIT</div>
+
+                  <div class="cgi-console-screen" id="cgiConsoleScreen">
+                    <div
+                      style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(96,165,250,0.3); padding-bottom: 4px;">
+                      <span>[AUDIT CONTROLS]</span>
+                      <span style="color: #10b981;">● READY</span>
+                    </div>
+
+                    <!-- Audit Matrix Check Rows -->
+                    <div class="audit-matrix-list">
+                      <div class="audit-matrix-row">
+                        <span>[1] Access Controls</span>
+                        <span class="audit-row-val" id="auditRow1">PENDING</span>
+                      </div>
+                      <div class="audit-matrix-row">
+                        <span>[2] Risk Assessment</span>
+                        <span class="audit-row-val" id="auditRow2">PENDING</span>
+                      </div>
+                      <div class="audit-matrix-row">
+                        <span>[3] Bot Automation</span>
+                        <span class="audit-row-val" id="auditRow3">PENDING</span>
+                      </div>
+                      <div class="audit-matrix-row">
+                        <span>[4] Quality Assurance</span>
+                        <span class="audit-row-val" id="auditRow4">PENDING</span>
+                      </div>
+                    </div>
+
+                    <!-- Verdict Screen -->
+                    <div class="audit-verdict-lcd" id="auditVerdict">
+                      ⏳ PRESS "RUN AUDIT" TO VERIFY COMPLIANCE
+                    </div>
+                  </div>
+
+                  <!-- Key Dynamic Badges (Populated on trigger) -->
+                  <div class="cgi-key-tags" id="cgiKeyTags"
+                    style="display: none; width: 100%; gap: 6px; flex-wrap: wrap; justify-content: center; margin-top: 6px;">
+                    <span class="skill-tag"
+                      style="font-size: 0.78em; padding: 4px 10px; background: rgba(16,185,129,0.25); border: 1px solid #10b981; color: #d1fae5;">⚖️
+                      SOX 404 Compliant</span>
+                    <span class="skill-tag"
+                      style="font-size: 0.78em; padding: 4px 10px; background: rgba(59,130,246,0.25); border: 1px solid #60a5fa; color: #dbeafe;">📊
+                      Multi-Million Risk Classifier</span>
+                    <span class="skill-tag"
+                      style="font-size: 0.78em; padding: 4px 10px; background: rgba(245,158,11,0.25); border: 1px solid #f59e0b; color: #fef3c7;">⚡
+                      80% RPA Efficiency</span>
+                  </div>
+
+                  <div style="display: flex; justify-content: center; align-items: center; margin-top: 6px;">
+                    <button class="btn-cgi-action" id="cgiAuditBtn" onclick="runCgiAuditBot()"
+                      style="width: 100%; justify-content: center;">
+                      <span>⚖️ RUN AUDIT</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Achievements & Role Details -->
+              <div class="exp-details-col" id="cgiRightCol">
+                <div class="exp-lock-placeholder" id="cgiLockHint">
+                  <div class="lock-icon-huge">🔍</div>
+                  <div class="lock-cta-title">CGI Experience Locked</div>
+                  <div class="lock-cta-sub">Press <strong>"RUN AUDIT"</strong> on the console to execute verification &
+                    reveal CGI achievements!</div>
+                </div>
+
+                <div class="exp-content-lock" id="cgiDetails">
+                  <div class="exp-achievements">
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>Efficient Project Management 🚀:</strong> Managed multiple projects simultaneously, prioritizing tasks effectively while adhering to Agile methodologies. Quickly adapted to new tech like <span class="tech">Blue Prism</span>, providing valuable support.</span>
+                    </div>
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>Data Extraction & Transformation 📊:</strong> Extracted iMatch data using complex SQL in <span class="tech">Dataiku</span>, applying transformations with <span class="tech">Pandas</span>. Visualized workflows in <span class="tech">Mural</span> and presented sprint progress regularly.</span>
+                    </div>
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>Data Analysis & Visualization 📈:</strong> Conducted in-depth database analysis, sourced audit data, and connected results to <span class="tech">Tableau</span> for executive reporting & visualization.</span>
+                    </div>
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>RPA BOT Management & Support 🤖:</strong> Resolved production issues, enhanced RPA bots across <span class="tech">Blue Prism</span> / <span class="tech">OpenShift</span>, and addressed server issues promptly.</span>
+                    </div>
+                    <div class="achievement">
+                      <span class="achievement-bullet">▸</span>
+                      <span><strong>Data Processing for Machine Learning 🧠:</strong> Retrieved data from various sources, applied business logic, and prepared feature datasets for Machine Learning models within the Kanban framework. 🔄</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
+        </div><!-- End of exp-panels-track -->
+      </div><!-- End of exp-panels-container -->
+
+      <!-- Slider Bottom Navigation Controls -->
+      <div class="slider-nav-controls">
+        <button class="slider-arrow-btn" id="prevSlideBtn" onclick="prevSlide()" disabled>
+          <span>❮ Previous</span>
+        </button>
+
+        <div class="slider-dots">
+          <div class="slider-dot active" onclick="goToSlide(0)" id="dot0" title="1. Haptiq"></div>
+          <div class="slider-dot" onclick="goToSlide(1)" id="dot1" title="2. SiftMed"></div>
+          <div class="slider-dot" onclick="goToSlide(2)" id="dot2" title="3. RBC"></div>
+          <div class="slider-dot" onclick="goToSlide(3)" id="dot3" title="4. NSCC"></div>
+          <div class="slider-dot" onclick="goToSlide(4)" id="dot4" title="5. CGI"></div>
+        </div>
+
+        <button class="slider-arrow-btn" id="nextSlideBtn" onclick="nextSlide()">
+          <span>Next ❯</span>
+        </button>
       </div>
     </section>
 
@@ -1338,18 +3449,18 @@
       <div class="skills-grid">
 
         <div class="skill-card">
-          <h3>🤖 AI/ML & NLP</h3>
+          <h3>🤖 AI/ML & AI Agents</h3>
           <div class="skill-tags">
             <span class="skill-tag">LLMs</span>
+            <span class="skill-tag">Text-to-SQL Agents</span>
+            <span class="skill-tag">Claude Code</span>
+            <span class="skill-tag">Cursor AI Workflows</span>
             <span class="skill-tag">RAG Pipelines</span>
             <span class="skill-tag">Prompt Engineering</span>
             <span class="skill-tag">Document AI</span>
             <span class="skill-tag">NLP</span>
             <span class="skill-tag">BERT</span>
-            <span class="skill-tag">LayoutLMv3</span>
             <span class="skill-tag">GLiNER</span>
-            <span class="skill-tag">LLaVA</span>
-            <span class="skill-tag">Mistral</span>
             <span class="skill-tag">Llama3</span>
           </div>
         </div>
@@ -1370,10 +3481,13 @@
         <div class="skill-card">
           <h3>💾 Data Engineering</h3>
           <div class="skill-tags">
+            <span class="skill-tag">Snowflake</span>
+            <span class="skill-tag">dbt</span>
+            <span class="skill-tag">Prefect</span>
+            <span class="skill-tag">Data Modeling</span>
             <span class="skill-tag">PySpark</span>
             <span class="skill-tag">Pandas</span>
             <span class="skill-tag">Neo4j</span>
-            <span class="skill-tag">Pinecone</span>
             <span class="skill-tag">Vector DBs</span>
             <span class="skill-tag">ETL Pipelines</span>
             <span class="skill-tag">Dataiku</span>
@@ -1384,6 +3498,7 @@
           <h3>💻 Programming</h3>
           <div class="skill-tags">
             <span class="skill-tag">Python (Expert)</span>
+            <span class="skill-tag">SQL</span>
             <span class="skill-tag">PyTorch</span>
             <span class="skill-tag">Hugging Face</span>
             <span class="skill-tag">LangChain</span>
@@ -1695,6 +3810,768 @@
     // Re-observe after adding classes
     document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
       observer.observe(el);
+    });
+
+    // ========================================================
+    // SYNTHESIZED WEB AUDIO SOUND FX ENGINE (ZERO EXTERNAL FILES)
+    // ========================================================
+    let audioCtx = null;
+    function getAudioContext() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) audioCtx = new AudioContext();
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // 1. Slot Machine Sounds
+    function playLeverPullSound() {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(140, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + 0.25);
+      gain.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.25);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.25);
+    }
+
+    function playReelTick() {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(400 + Math.random() * 250, ctx.currentTime);
+      gain.gain.setValueAtTime(0.12, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.04);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.04);
+    }
+
+    function playJackpotFanfare() {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const notes = [523.25, 659.25, 783.99, 1046.50, 783.99, 1046.50]; // C5, E5, G5, C6, G5, C6
+      notes.forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.12);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime + i * 0.12);
+        gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + i * 0.12 + 0.11);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(ctx.currentTime + i * 0.12);
+        osc.stop(ctx.currentTime + i * 0.12 + 0.11);
+      });
+    }
+
+    // 2. Hospital Cardiac Monitor & Defibrillator Sounds
+    function playDefibChargeSound() {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(220, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(1400, ctx.currentTime + 1.2);
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.2, ctx.currentTime + 1.1);
+      gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 1.25);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 1.25);
+    }
+
+    function playDefibShockSound() {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(90, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(20, ctx.currentTime + 0.45);
+      gain.gain.setValueAtTime(0.35, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.45);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.45);
+    }
+
+    function playHeartbeatBeep() {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(880, ctx.currentTime);
+      gain.gain.setValueAtTime(0.18, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.12);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.12);
+    }
+
+    // 3. ATM Sounds
+    function playAtmKeyBeep(freq = 941) {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      gain.gain.setValueAtTime(0.16, ctx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.08);
+    }
+
+    function playAtmCashSound() {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(220 + i * 35, ctx.currentTime);
+          gain.gain.setValueAtTime(0.14, ctx.currentTime);
+          gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.05);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.05);
+        }, i * 70);
+      }
+    }
+
+    // ========================================================
+    // INTERACTIVE MACHINE HANDLERS
+    // ========================================================
+
+    // 1. Vegas Slot Machine Controller
+    const slotSymbols = ['🎰', '💎', '7️⃣', '🎲', '♠️', '⚡', '👑', '🔥'];
+    const jackpotMessages = [
+      "🎉 JACKPOT! 48% Snowflake Compute Costs Saved!",
+      "⚡ JACKPOT! Text-to-SQL AI Agent Online & Benchmarked!",
+      "🚀 JACKPOT! Claude Code & Cursor Workflows Deployed!",
+      "💎 JACKPOT! Near Real-Time ETL Pipeline Operational!"
+    ];
+
+    function pullSlotLever() {
+      const lever = document.getElementById('slotLever');
+      if (lever) {
+        lever.classList.add('pulled');
+        playLeverPullSound();
+        setTimeout(() => lever.classList.remove('pulled'), 400);
+      }
+      spinSlotMachine();
+    }
+
+    function spinSlotMachine() {
+      const reel1 = document.getElementById('reel1');
+      const reel2 = document.getElementById('reel2');
+      const reel3 = document.getElementById('reel3');
+      const banner = document.getElementById('slotBanner');
+      const btn = document.getElementById('slotSpinBtn');
+      const details = document.getElementById('haptiqDetails');
+      const lockHint = document.getElementById('haptiqLockHint');
+
+      if (!reel1 || !reel2 || !reel3) return;
+
+      btn.disabled = true;
+      reel1.classList.add('spinning');
+      reel2.classList.add('spinning');
+      reel3.classList.add('spinning');
+      banner.classList.remove('jackpot-win');
+      banner.textContent = "🎲 Spinning reels across Casino & iGaming data pipelines...";
+
+      let counter = 0;
+      const spinInterval = setInterval(() => {
+        reel1.textContent = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+        reel2.textContent = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+        reel3.textContent = slotSymbols[Math.floor(Math.random() * slotSymbols.length)];
+        playReelTick();
+        counter++;
+      }, 75);
+
+      setTimeout(() => {
+        clearInterval(spinInterval);
+        reel1.classList.remove('spinning');
+        reel2.classList.remove('spinning');
+        reel3.classList.remove('spinning');
+
+        // Winning Jackpot combination
+        const winners = [
+          ['🎰', '7️⃣', '🎰'],
+          ['💎', '💎', '💎'],
+          ['⚡', '⚡', '⚡'],
+          ['👑', '7️⃣', '👑']
+        ];
+        const combo = winners[Math.floor(Math.random() * winners.length)];
+        reel1.textContent = combo[0];
+        reel2.textContent = combo[1];
+        reel3.textContent = combo[2];
+
+        playJackpotFanfare();
+
+        const randomMsg = jackpotMessages[Math.floor(Math.random() * jackpotMessages.length)];
+        banner.classList.add('jackpot-win');
+        banner.innerHTML = randomMsg + " ✨ <strong>HAPTIQ EXPERIENCE UNLOCKED!</strong>";
+
+        const haptiqTags = document.getElementById('haptiqKeyTags');
+        if (haptiqTags) haptiqTags.style.display = 'flex';
+
+        // Reveal experience on right
+        const machineCol = document.getElementById('haptiqMachineCol');
+        if (machineCol) machineCol.classList.add('unlocked-state');
+        if (details) details.classList.add('unlocked');
+        if (lockHint) lockHint.classList.add('hidden');
+
+        btn.disabled = false;
+      }, 1400);
+    }
+
+    // ========================================================
+    // 2. REAL-TIME CRT OSCILLOSCOPE CANVAS ENGINE (SIFTMED)
+    // ========================================================
+    let ecgMode = 'asystole'; // 'asystole' (red flatline) or 'normal' (green sinus rhythm)
+    let ecgScanX = 0;
+    let ecgLastY = 70;
+    let ecgCyclePos = 0;
+    const ecgCycleLength = 160;
+
+    function getEcgY(pos, baseHeight = 70) {
+      if (ecgMode === 'asystole') {
+        return baseHeight + (Math.random() - 0.5) * 1.5;
+      }
+
+      // Normal Sinus Rhythm (P - Q - R - S - T Waveform)
+      const p = pos % ecgCycleLength;
+      if (p < 25) {
+        return baseHeight;
+      } else if (p < 45) {
+        const t = (p - 25) / 20;
+        return baseHeight - Math.sin(t * Math.PI) * 12;
+      } else if (p < 60) {
+        return baseHeight;
+      } else if (p < 66) {
+        return baseHeight + (p - 60) * 1.8;
+      } else if (p < 74) {
+        const t = (p - 66) / 8;
+        return baseHeight + 11 - t * 68;
+      } else if (p < 82) {
+        const t = (p - 74) / 8;
+        return baseHeight - 57 + t * 76;
+      } else if (p < 90) {
+        const t = (p - 82) / 8;
+        return baseHeight + 19 - t * 19;
+      } else if (p < 105) {
+        return baseHeight;
+      } else if (p < 135) {
+        const t = (p - 105) / 30;
+        return baseHeight - Math.sin(t * Math.PI) * 18;
+      } else {
+        return baseHeight;
+      }
+    }
+
+    function initEcgCanvas() {
+      const canvas = document.getElementById('ecgCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const width = canvas.width;
+      const height = canvas.height;
+
+      function renderEcgFrame() {
+        const speed = ecgMode === 'asystole' ? 2.5 : 3.4;
+        const nextX = ecgScanX + speed;
+
+        const clearWidth = 28;
+        ctx.clearRect(ecgScanX, 0, clearWidth, height);
+        if (nextX >= width) {
+          ctx.clearRect(0, 0, clearWidth, height);
+        }
+
+        const targetY = getEcgY(ecgCyclePos, height / 2);
+        ctx.beginPath();
+        ctx.moveTo(ecgScanX, ecgLastY);
+        ctx.lineTo(nextX, targetY);
+
+        if (ecgMode === 'asystole') {
+          ctx.strokeStyle = '#ef4444';
+          ctx.shadowColor = '#ef4444';
+          ctx.shadowBlur = 6;
+          ctx.lineWidth = 2.5;
+        } else {
+          ctx.strokeStyle = '#10b981';
+          ctx.shadowColor = '#34d399';
+          ctx.shadowBlur = 10;
+          ctx.lineWidth = 3.2;
+        }
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(nextX, targetY, 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = ecgMode === 'asystole' ? '#fca5a5' : '#a7f3d0';
+        ctx.shadowColor = ecgMode === 'asystole' ? '#ef4444' : '#10b981';
+        ctx.shadowBlur = 12;
+        ctx.fill();
+
+        ecgLastY = targetY;
+        ecgCyclePos += speed;
+        ecgScanX = nextX;
+
+        if (ecgScanX >= width) {
+          ecgScanX = 0;
+          ecgLastY = getEcgY(ecgCyclePos, height / 2);
+        }
+
+        requestAnimationFrame(renderEcgFrame);
+      }
+
+      requestAnimationFrame(renderEcgFrame);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initEcgCanvas);
+    } else {
+      initEcgCanvas();
+    }
+
+    // 2. LifePak Hospital Defibrillator Controller
+    let heartInterval = null;
+    let heartTimeout = null;
+
+    function stopHeartAudio() {
+      if (heartInterval) {
+        clearInterval(heartInterval);
+        heartInterval = null;
+      }
+      if (heartTimeout) {
+        clearTimeout(heartTimeout);
+        heartTimeout = null;
+      }
+    }
+
+    function chargeAndShockDefib() {
+      const btn = document.getElementById('medDefibBtn');
+      const flash = document.getElementById('crtFlash');
+      const alarmStatus = document.getElementById('medAlarmStatus');
+      const hudHr = document.getElementById('hudHr');
+      const hudSpo2 = document.getElementById('hudSpo2');
+      const hudBp = document.getElementById('hudBp');
+      const details = document.getElementById('siftmedDetails');
+      const lockHint = document.getElementById('siftmedLockHint');
+      const machineCol = document.getElementById('siftmedMachineCol');
+
+      if (!btn) return;
+
+      btn.disabled = true;
+      btn.innerHTML = "<span>⚡ CHARGING: 50J... 120J... 200J!</span>";
+      btn.classList.add('ready-shock');
+      playDefibChargeSound();
+
+      setTimeout(() => {
+        btn.innerHTML = "<span>💥 SHOCK DELIVERED (200J)</span>";
+        playDefibShockSound();
+
+        if (flash) {
+          flash.classList.add('shocked');
+          setTimeout(() => flash.classList.remove('shocked'), 500);
+        }
+
+        ecgMode = 'normal';
+
+        if (alarmStatus) {
+          alarmStatus.style.color = "#10b981";
+          alarmStatus.textContent = "💚 NORMAL SINUS RHYTHM • AI TELEMETRY STABLE";
+        }
+        if (hudHr) {
+          hudHr.classList.add('alive');
+          hudHr.textContent = "78";
+        }
+        if (hudSpo2) hudSpo2.textContent = "99%";
+        if (hudBp) hudBp.textContent = "120/80";
+
+        // Play hospital telemetry audio (capped at 1 minute max)
+        stopHeartAudio();
+        playHeartbeatBeep();
+        heartInterval = setInterval(playHeartbeatBeep, 2200);
+        heartTimeout = setTimeout(() => {
+          stopHeartAudio();
+        }, 60000); // 1 minute auto-cutoff
+
+        // Reveal SiftMed dynamic key badges
+        const siftmedTags = document.getElementById('siftmedKeyTags');
+        if (siftmedTags) siftmedTags.style.display = 'flex';
+
+        // Reveal SiftMed experience on right
+        if (machineCol) machineCol.classList.add('unlocked-state');
+        if (details) details.classList.add('unlocked');
+        if (lockHint) lockHint.classList.add('hidden');
+
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.classList.remove('ready-shock');
+          btn.innerHTML = "<span>⚡ RE-CHARGE & SHOCK</span>";
+        }, 1500);
+      }, 1250);
+    }
+
+    // 3. Diebold / NCR ATM Machine Controller
+    let atmPinInput = "";
+
+    function pressAtmKey(key) {
+      const pinDisplay = document.getElementById('atmPinDisplay');
+      const mainPrompt = document.getElementById('atmMainPrompt');
+      const optNeo4j = document.getElementById('optNeo4j');
+      const optOcr = document.getElementById('optOcr');
+      const optCicd = document.getElementById('optCicd');
+      const freqs = { '1': 697, '2': 770, '3': 852, '4': 941, '5': 1209, '6': 1336, '7': 1477, '8': 697, '9': 770, '0': 852, 'X': 440 };
+      playAtmKeyBeep(freqs[key] || 880);
+
+      if (key === 'X') {
+        atmPinInput = "";
+        if (pinDisplay) pinDisplay.innerHTML = "PIN: [ • • • • ]";
+        if (mainPrompt) mainPrompt.innerHTML = "<span style='color:#f87171;'>[ TRANSACTION RESET ]</span>";
+        if (optNeo4j) { optNeo4j.textContent = "[1] Fast Cash"; optNeo4j.classList.remove('active-pill'); }
+        if (optOcr) { optOcr.textContent = "[2] Balance"; optOcr.classList.remove('active-pill'); }
+        if (optCicd) { optCicd.textContent = "[3] Deposit"; optCicd.classList.remove('active-pill'); }
+        const cashFan = document.getElementById('atmCashFan');
+        if (cashFan) { cashFan.style.display = 'none'; cashFan.classList.remove('dispensed'); }
+      } else {
+        if (atmPinInput.length < 4) atmPinInput += key;
+        if (pinDisplay) {
+          const dots = "★ ".repeat(atmPinInput.length) + "• ".repeat(Math.max(0, 4 - atmPinInput.length));
+          pinDisplay.innerHTML = `PIN: [ <span style='color:#38bdf8;'>${dots.trim()}</span> ]`;
+        }
+        if (mainPrompt) mainPrompt.innerHTML = "<span style='color:#10b981;'>[ PIN ENTERED • PRESS ENT ]</span>";
+      }
+    }
+
+    function withdrawAtmCash() {
+      const btn = document.getElementById('atmWithdrawBtn');
+      const mainPrompt = document.getElementById('atmMainPrompt');
+      const pinDisplay = document.getElementById('atmPinDisplay');
+      const cashFan = document.getElementById('atmCashFan');
+      const keyTags = document.getElementById('rbcKeyTags');
+      const optNeo4j = document.getElementById('optNeo4j');
+      const optOcr = document.getElementById('optOcr');
+      const optCicd = document.getElementById('optCicd');
+      const details = document.getElementById('rbcDetails');
+      const lockHint = document.getElementById('rbcLockHint');
+      const machineCol = document.getElementById('rbcMachineCol');
+
+      if (!btn) return;
+      btn.disabled = true;
+
+      if (mainPrompt) {
+        mainPrompt.innerHTML = "<span style='color:#38bdf8;'>⏳ [AUTHORIZING CHIP...]</span>";
+      }
+      if (pinDisplay) {
+        pinDisplay.innerHTML = "CONNECTING: NEO4J VAULT...";
+      }
+      playAtmKeyBeep(1209);
+
+      setTimeout(() => {
+        playAtmCashSound();
+        if (cashFan) {
+          cashFan.style.display = 'flex';
+          cashFan.classList.add('dispensed');
+        }
+
+        if (keyTags) {
+          keyTags.style.display = 'flex';
+        }
+
+        if (mainPrompt) {
+          mainPrompt.innerHTML = "<span style='color:#10b981;'>✅ [WITHDRAWAL APPROVED]</span>";
+        }
+        if (pinDisplay) {
+          pinDisplay.innerHTML = "<span style='color:#a7f3d0;'>3 FINANCIAL PIPELINES LOADED</span>";
+        }
+
+        if (optNeo4j) {
+          optNeo4j.textContent = "[1] Neo4j Graph";
+          optNeo4j.classList.add('active-pill');
+        }
+        if (optOcr) {
+          optOcr.textContent = "[2] PaddleOCR";
+          optOcr.classList.add('active-pill');
+        }
+        if (optCicd) {
+          optCicd.textContent = "[3] Ansible CI/CD";
+          optCicd.classList.add('active-pill');
+        }
+
+        // Reveal RBC experience on right
+        if (machineCol) machineCol.classList.add('unlocked-state');
+        if (details) details.classList.add('unlocked');
+        if (lockHint) lockHint.classList.add('hidden');
+
+        setTimeout(() => {
+          btn.disabled = false;
+          btn.innerHTML = "<span>💵 WITHDRAW AGAIN</span>";
+        }, 1200);
+      }, 900);
+    }
+
+    // 4. NSCC Cybernetic Research Robot Controller
+    function playRobotChirpSound() {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      [440, 554.37, 659.25, 880, 1108.73, 1318.51].forEach((freq, i) => {
+        setTimeout(() => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime);
+          gain.gain.setValueAtTime(0.1, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.12);
+        }, i * 65);
+      });
+    }
+
+    function runResearchScanner() {
+      const btn = document.getElementById('nsccScanBtn');
+      const eyeL = document.getElementById('robotEyeL');
+      const eyeR = document.getElementById('robotEyeR');
+      const mouth = document.getElementById('robotMouth');
+      const dialog = document.getElementById('robotDialog');
+      const hitRate = document.getElementById('robotHitRate');
+      const benchScore = document.getElementById('robotBenchScore');
+      const findings = document.getElementById('robotFindings');
+      const details = document.getElementById('nsccDetails');
+      const lockHint = document.getElementById('nsccLockHint');
+      const machineCol = document.getElementById('nsccMachineCol');
+
+      if (!btn) return;
+      btn.disabled = true;
+      btn.innerHTML = "<span>🤖 COMPUTING NEURAL RAG...</span>";
+      playRobotChirpSound();
+
+      if (eyeL) eyeL.classList.add('scanning');
+      if (eyeR) eyeR.classList.add('scanning');
+      if (mouth) mouth.classList.add('speaking');
+      if (dialog) {
+        dialog.innerHTML = "⚡ <strong>[NEURAL RAG SCANNING]</strong> PINECONE VECTOR RETRIEVAL IN PROGRESS... MATCHING 7B LLM EMBEDDINGS...";
+      }
+
+      setTimeout(() => {
+        if (eyeL) {
+          eyeL.classList.remove('scanning');
+          eyeL.classList.add('active-glow');
+        }
+        if (eyeR) {
+          eyeR.classList.remove('scanning');
+          eyeR.classList.add('active-glow');
+        }
+        if (mouth) mouth.classList.remove('speaking');
+        if (hitRate) {
+          hitRate.style.color = "#10b981";
+          hitRate.textContent = "83% ✓";
+        }
+        if (benchScore) {
+          benchScore.style.color = "#38bdf8";
+          benchScore.textContent = "+10% SOTA";
+        }
+        if (findings) {
+          findings.style.display = "flex";
+        }
+        if (dialog) {
+          dialog.innerHTML = "🤖 <strong>[NEURAL SYNC COMPLETE]</strong> 83% RAG hit rate achieved on PIVP research (+10% vs SOTA). NSCC research findings unlocked!";
+        }
+
+        // Reveal NSCC experience on right
+        if (machineCol) machineCol.classList.add('unlocked-state');
+        if (details) details.classList.add('unlocked');
+        if (lockHint) lockHint.classList.add('hidden');
+
+        btn.disabled = false;
+        btn.innerHTML = "<span>🤖 RE-ACTIVATE ROBOT</span>";
+      }, 950);
+    }
+
+    // 5. CGI Enterprise Audit & SOX Compliance Matrix Controller
+    function playRpaAuditSound() {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      for (let i = 0; i < 4; i++) {
+        setTimeout(() => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(400 + (i % 2 === 0 ? 250 : -100), ctx.currentTime);
+          gain.gain.setValueAtTime(0.08, ctx.currentTime);
+          gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.1);
+        }, i * 80);
+      }
+    }
+
+    function runCgiAuditBot() {
+      const btn = document.getElementById('cgiAuditBtn');
+      const verdict = document.getElementById('auditVerdict');
+      const row1 = document.getElementById('auditRow1');
+      const row2 = document.getElementById('auditRow2');
+      const row3 = document.getElementById('auditRow3');
+      const row4 = document.getElementById('auditRow4');
+      const keyTags = document.getElementById('cgiKeyTags');
+      const details = document.getElementById('cgiDetails');
+      const lockHint = document.getElementById('cgiLockHint');
+      const machineCol = document.getElementById('cgiMachineCol');
+
+      if (!btn) return;
+      btn.disabled = true;
+      btn.innerHTML = "<span>⚖️ ALIGNING AUDIT MATRIX...</span>";
+      playRpaAuditSound();
+
+      if (verdict) {
+        verdict.classList.remove('compliant');
+        verdict.innerHTML = "⚡ SCANNING SOX 404 CONTROLS & RISK MODELS...";
+      }
+
+      // Step 1: Row 1 & Row 2 Check
+      setTimeout(() => {
+        if (row1) {
+          row1.classList.add('pass');
+          row1.textContent = "VERIFIED [PASS]";
+        }
+        if (row2) {
+          row2.classList.add('pass');
+          row2.textContent = "0.00 ANOMALIES [PASS]";
+        }
+      }, 350);
+
+      // Step 2: Row 3 & Row 4 Check
+      setTimeout(() => {
+        if (row3) {
+          row3.classList.add('pass');
+          row3.textContent = "+80% EFFICIENCY [PASS]";
+        }
+        if (row4) {
+          row4.classList.add('pass');
+          row4.textContent = "CLEARED [100%]";
+        }
+      }, 650);
+
+      // Step 3: Verdict Matrix Alignment Complete
+      setTimeout(() => {
+        if (verdict) {
+          verdict.classList.add('compliant');
+          verdict.innerHTML = "*** MATRIX ALIGNED: VERDICT = COMPLIANT ***";
+        }
+
+        if (keyTags) {
+          keyTags.style.display = 'flex';
+        }
+
+        // Reveal CGI experience on right
+        if (machineCol) machineCol.classList.add('unlocked-state');
+        if (details) details.classList.add('unlocked');
+        if (lockHint) lockHint.classList.add('hidden');
+
+        btn.disabled = false;
+        btn.innerHTML = "<span>⚖️ RE-RUN AUDIT</span>";
+      }, 950);
+    }
+
+    // ========================================================
+    // DIRECT EXPERIENCE TAB PANELS CONTROLLER (5 PANELS)
+    // ========================================================
+    let currentExpSlide = 0;
+    const totalExpSlides = 5;
+
+    function goToSlide(index) {
+      currentExpSlide = index;
+
+      // Silence telemetry audio if leaving SiftMed tab
+      if (index !== 1 && typeof stopHeartAudio === 'function') {
+        stopHeartAudio();
+      }
+
+      // Smoothly slide track
+      const track = document.getElementById('expPanelsTrack');
+      if (track) {
+        track.style.transform = `translateX(-${index * 100}%)`;
+      }
+
+      // Switch active panel & update tab buttons and dots
+      for (let i = 0; i < totalExpSlides; i++) {
+        const panel = document.getElementById(`expPanel${i}`);
+        const tabBtn = document.getElementById(`tabBtn${i}`);
+        const dot = document.getElementById(`dot${i}`);
+
+        if (panel) {
+          if (i === index) {
+            panel.classList.add('active');
+          } else {
+            panel.classList.remove('active');
+          }
+        }
+        if (tabBtn) {
+          if (i === index) tabBtn.classList.add('active');
+          else tabBtn.classList.remove('active');
+        }
+        if (dot) {
+          if (i === index) dot.classList.add('active');
+          else dot.classList.remove('active');
+        }
+      }
+
+      // Update Prev / Next buttons
+      const prevBtn = document.getElementById('prevSlideBtn');
+      const nextBtn = document.getElementById('nextSlideBtn');
+      if (prevBtn) prevBtn.disabled = (index === 0);
+      if (nextBtn) nextBtn.disabled = (index === totalExpSlides - 1);
+    }
+
+    function nextSlide() {
+      if (currentExpSlide < totalExpSlides - 1) {
+        goToSlide(currentExpSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentExpSlide > 0) {
+        goToSlide(currentExpSlide - 1);
+      }
+    }
+
+    // Keyboard Arrow Navigation
+    document.addEventListener('keydown', (e) => {
+      const expSection = document.getElementById('experience');
+      if (!expSection) return;
+      const rect = expSection.getBoundingClientRect();
+      const inView = rect.top < window.innerHeight && rect.bottom >= 0;
+      if (inView) {
+        if (e.key === 'ArrowRight') nextSlide();
+        else if (e.key === 'ArrowLeft') prevSlide();
+      }
     });
   </script>
 
